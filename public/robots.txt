@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://bangarwaanish.github.io/sitemap.xml
+
+# SEO optimization for DevOps portfolio
+Disallow: /private/
+Disallow: /tmp/
