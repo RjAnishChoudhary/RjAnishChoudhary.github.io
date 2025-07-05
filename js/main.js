@@ -1,3 +1,5 @@
+console.log("%c👋 Hi there! Need a DevOps expert? Let's chat!", "color: #06b6d4; font-size: 16px;");
+
 // Mobile menu toggle
 const mobileMenu = document.querySelector('.mobile-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -147,3 +149,58 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(section);
   });
 });
+
+//client-side validation
+contactForm.addEventListener('submit', (e) => {
+  const email = document.getElementById('email').value;
+  if (!email.includes('@')) {
+    e.preventDefault();
+    alert('Please enter a valid email address.');
+  }
+});
+
+// Dark Mode Toggle Functionality
+const darkModeToggle = document.getElementById('darkModeToggle');
+const darkModeIcon = darkModeToggle.querySelector('i');
+
+// Check for saved user preference or use system preference
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+  document.body.classList.add('dark-mode');
+  darkModeIcon.classList.replace('fa-moon', 'fa-sun');
+}
+
+// Toggle dark/light mode
+darkModeToggle.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark-mode');
+  darkModeIcon.classList.toggle('fa-moon', !isDark);
+  darkModeIcon.classList.toggle('fa-sun', isDark);
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Add dark mode styles to your CSS
+/* Add this to your existing CSS */
+.dark-mode {
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+.dark-mode .skill-card,
+.dark-mode .experience-content {
+  background: rgba(30, 41, 59, 0.6);
+  color: #ffffff;
+}
+
+/* Light mode styles */
+.light-mode {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.light-mode .skill-card,
+.light-mode .experience-content {
+  background: rgba(226, 232, 240, 0.8);
+  color: #0f172a;
+}
